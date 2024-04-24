@@ -310,6 +310,9 @@ local function r_integer(s)
 		local lit = s:sub(l, r):gsub('_', '')
 		
 		return tonumber(lit, 2), s:sub(r + 1)
+	elseif prefix:match('^0[#\t \r\n]') then
+		-- standalone 0.
+		return 0, s:sub(2)
 	end
 
 	-- Integers can be led with +, -
